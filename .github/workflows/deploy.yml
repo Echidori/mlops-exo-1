@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker image
-        run: build -t mlops-exo-1:latest .
+        run: docker build -t mlops-exo-1:latest .
 
       - name: Login to Docker
         run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
