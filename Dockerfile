@@ -9,4 +9,4 @@ COPY app.py app/
 COPY regression.joblib app/
 EXPOSE 5000
 
-CMD["fastapi", "run", "app.py", "--port", "5000"]
+CMD ["fastapi", "run", "app.py", "--port", "5000"]
