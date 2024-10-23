@@ -26,11 +26,12 @@ jobs:
 
       - name: Connect to the VM with SSH
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh ubuntu@${{ secrets.SSH_HOST }} -o StrictHostKeyChecking=no &&
-            "if [ ! -d "/home/ubuntu/emile.merle" ]; then
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh ubuntu@${{ secrets.SSH_HOST }} -o StrictHostKeyChecking=no << 'EOF'
+            if [ ! -d "/home/ubuntu/emile.merle" ]; then
               mkdir /home/ubuntu/emile.merle
             fi
             cd /home/ubuntu/emile.merle
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/mlops-exo-1:latest
             docker stop ${{ secrets.DOCKER_HUB_USERNAME }}-mlops-exo-1:latest || true
-            docker run -d -p 2704:2704 --name ${{ secrets.DOCKER_HUB_USERNAME }}-mlops-exo-1 ${{ secrets.DOCKER_HUB_USERNAME }}/mlops-exo-1:latest"
+            docker run -d -p 2704:2704 --name ${{ secrets.DOCKER_HUB_USERNAME }}-mlops-exo-1:latest ${{ secrets.DOCKER_HUB_USERNAME }}/mlops-exo-1:latest
+          EOF
