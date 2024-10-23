@@ -7,19 +7,19 @@ on:
 
 jobs:
   build:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Build Docker image
-      run: build -t mlops-exo-1:latest .
+      - name: Build Docker image
+        run: build -t mlops-exo-1:latest .
 
-    - name: Login to Docker
-      run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }
+      - name: Login to Docker
+        run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }
 
-    - name: Tag Docker image
-      run: docker tag mlops-exo-1:latest ${{ secrets.DOCKER_HUB_USERNAME }}/mlops-exo-1:latest
+      - name: Tag Docker image
+        run: docker tag mlops-exo-1:latest ${{ secrets.DOCKER_HUB_USERNAME }}/mlops-exo-1:latest
 
-    - name: Push to Docker Hub
-      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mlops-exo-1:latest
+      - name: Push to Docker Hub
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mlops-exo-1:latest
