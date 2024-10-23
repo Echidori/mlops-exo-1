@@ -3,7 +3,7 @@ services:
     build:
       context: .
     ports:
-     - "8000:5000"
+     - "8080:2704"
     volumes:
       -./app.py:app/app.py
       -./regression.joblib:app/regression.joblib
