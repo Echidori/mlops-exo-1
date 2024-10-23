@@ -1,6 +1,10 @@
 services:
   app:
     build:
+      context: .
     ports:
      - "8000:5000"
-    
+    volumes:
+      -./app.py:app/app.py
+      -./regression.joblib:app/regression.joblib
+      -./requirements.txt:app/requirements.txt
