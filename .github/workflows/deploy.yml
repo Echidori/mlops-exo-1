@@ -26,7 +26,7 @@ jobs:
 
       - name: Connect to the VM with SSH
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh ubuntu@${{ secrets.SSH_HOST }} -o StrictHostKeyChecking=no
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh ubuntu@${{ secrets.SSH_HOST }} -o StrictHostKeyChecking=no &&
             "if [ ! -d "/home/ubuntu/emile.merle" ]; then
               mkdir /home/ubuntu/emile.merle
             fi
